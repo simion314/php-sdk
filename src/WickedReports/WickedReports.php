@@ -31,6 +31,7 @@ class WickedReports {
     /**
      * WickedReports constructor.
      * @param string $apiKey
+     * @param null $testMode
      */
     public function __construct($apiKey, $testMode = NULL)
     {

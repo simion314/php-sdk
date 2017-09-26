@@ -7,7 +7,7 @@ use WickedReports\Exception\ValidationException;
 
 class Response {
 
-    const TYPES = [
+    public static $TYPES = [
         'contacts'   => \WickedReports\Api\Item\Contact::class,
         'orders'     => \WickedReports\Api\Item\Order::class,
         'orderitems' => \WickedReports\Api\Item\OrderItem::class,
@@ -52,7 +52,7 @@ class Response {
             throw new ValidationException('You have to provide valid `timezone` value');
         }
 
-        $item_class = isset(static::TYPES[$this->type]) ? static::TYPES[$this->type] : null;
+        $item_class = isset(self::$TYPES[$this->type]) ? self::$TYPES[$this->type] : null;
 
         if ( ! isset($item_class)) {
             throw new ValidationException('No corresponding item type class found');

@@ -6,7 +6,7 @@ use WickedReports\Exception\ValidationException;
 
 class LatestEndpoint {
 
-    const ALLOWED_DATATYPES = ['contacts', 'orders', 'orderitems', 'payments', 'products'];
+    public static $ALLOWED_DATATYPES = ['contacts', 'orders', 'orderitems', 'payments', 'products'];
 
     /**
      * @var string
@@ -97,8 +97,8 @@ class LatestEndpoint {
             throw new ValidationException('Data type cannot be empty');
         }
 
-        if ( ! in_array($dataType, static::ALLOWED_DATATYPES, true)) {
-            throw new ValidationException('Data type should be one of these: '.implode(', ', static::ALLOWED_DATATYPES));
+        if ( ! in_array($dataType, self::$ALLOWED_DATATYPES, true)) {
+            throw new ValidationException('Data type should be one of these: '.implode(', ', self::$ALLOWED_DATATYPES));
         }
 
         $this->dataType = $dataType;
